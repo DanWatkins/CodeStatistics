@@ -47,5 +47,13 @@ namespace CodeStatistics
             String content = ReadFile(filepath);
             mLines = content.Split('\n').ToList();
         }
+
+
+
+        public override long CalculateSize()
+        {
+            FileInfo fi = new FileInfo(getName());
+            return fi.Length;
+        }
     }
 }

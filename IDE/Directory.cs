@@ -36,5 +36,24 @@ namespace CodeStatistics
                 }
             }
         }
+
+
+        public override long CalculateSize()
+        {
+            long size = 0;
+
+            foreach (Directory dir in mDirectories)
+            {
+                size += dir.CalculateSize();
+            }
+
+
+            foreach (File file in mFiles)
+            {
+                size += file.CalculateSize();
+            }
+
+            return size;
+        }
     }
 }

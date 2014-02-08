@@ -12,6 +12,8 @@ namespace CodeStatistics
 
             Directory dir = new Directory();
             dir.Load("../../");
+
+            Console.WriteLine("Size is " + dir.CalculateSize()/1024/1024 + " MiB");
         }
     }
 }

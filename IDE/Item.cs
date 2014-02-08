@@ -17,5 +17,6 @@ namespace CodeStatistics
         public String getName() { return mName; }
 
         public abstract void Load(String filepath);
+        public abstract long CalculateSize();
     }
 }
