@@ -1,4 +1,11 @@
-﻿using System;
+﻿//=======================================================================================================================|
+// Created 2014.02.08 by Daniel L. Watkins
+//
+// Copyright (C) 2014 Daniel L. Watkins
+// This file is licensed under the MIT License.
+//=======================================================================================================================|
+
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +19,13 @@ namespace CodeStatistics
     {
         private List<String> mLines;
 
-
         public int getLineCount() { return mLines.Count(); }
+
+
+        public File()
+        {
+            mLines = new List<String>();
+        }
 
 
         /**
@@ -54,6 +66,15 @@ namespace CodeStatistics
         {
             FileInfo fi = new FileInfo(getName());
             return fi.Length;
+        }
+
+
+        public override long CalculateLineCount()
+        {
+            if (mLines != null)
+                return mLines.Count;
+
+            return 0;
         }
     }
 }

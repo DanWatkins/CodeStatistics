@@ -1,4 +1,11 @@
-﻿using System;
+﻿//=======================================================================================================================|
+// Created 2014.02.08 by Daniel L. Watkins
+//
+// Copyright (C) 2014 Daniel L. Watkins
+// This file is licensed under the MIT License.
+//=======================================================================================================================|
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +17,26 @@ namespace CodeStatistics
     {
         private List<Item> mFiles, mDirectories;
 
-        public override void Load(String filepath)
+
+        public Directory()
         {
-            List<String> entries = System.IO.Directory.GetFileSystemEntries(filepath).ToList();
             mFiles = new List<Item>();
             mDirectories = new List<Item>();
+        }
+
+        public override void Load(String filepath)
+        {
+            if (!System.IO.Directory.Exists(filepath))
+            {
+                Console.WriteLine("Filepath does not exist");
+                Console.WriteLine(filepath);
+
+                return;
+            }
+
+            List<String> entries = System.IO.Directory.GetFileSystemEntries(filepath).ToList();
+            mFiles.Clear();
+            mDirectories.Clear();
 
             foreach (String entry in entries)
             {
@@ -54,6 +76,25 @@ namespace CodeStatistics
             }
 
             return size;
+        }
+
+
+        public override long CalculateLineCount()
+        {
+            long count = 0;
+
+            foreach (Directory dir in mDirectories)
+            {
+                count += dir.CalculateLineCount();
+            }
+
+
+            foreach (File file in mFiles)
+            {
+                count += file.CalculateLineCount();
+            }
+
+            return count;
         }
     }
 }
