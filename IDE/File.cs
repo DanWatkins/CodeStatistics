@@ -5,7 +5,10 @@ using System.Linq;
 
 namespace CodeStatistics
 {
-    class File
+    /**
+     * Represents a text file as a List<String> containing an entry for each line of the file.
+     */
+    class File : Item
     {
         private List<String> mLines;
 
@@ -39,7 +42,7 @@ namespace CodeStatistics
         /**
          * Handles loading the file. After loading, statistics can be determined
          */
-        public void Load(String filepath)
+        public override void Load(String filepath)
         {
             String content = ReadFile(filepath);
             mLines = content.Split('\n').ToList();

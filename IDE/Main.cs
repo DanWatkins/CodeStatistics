@@ -8,6 +8,10 @@ namespace CodeStatistics
         {
             CodeStatistics.File file = new File();
             file.Load("default.txt");
+
+
+            Directory dir = new Directory();
+            dir.Load("../../");
         }
     }
 }
