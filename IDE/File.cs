@@ -19,9 +19,6 @@ namespace CodeStatistics
     {
         private List<String> mLines;
 
-        public int getLineCount() { return mLines.Count(); }
-
-
         public File()
         {
             mLines = new List<String>();
@@ -62,6 +59,9 @@ namespace CodeStatistics
 
 
 
+        /**
+         * Returns the size in bytes as stored on file
+         */
         public override long CalculateSize()
         {
             FileInfo fi = new FileInfo(getName());
@@ -69,6 +69,9 @@ namespace CodeStatistics
         }
 
 
+        /**
+         * Returns the number of lines of text (newline occurences)
+         */
         public override long CalculateLineCount()
         {
             if (mLines != null)

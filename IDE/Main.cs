@@ -6,6 +6,7 @@
 //=======================================================================================================================|
 
 using System;
+using System.Collections.Generic;
 
 namespace CodeStatistics
 {
@@ -15,7 +16,19 @@ namespace CodeStatistics
         {
             String input = Console.ReadLine();
 
-            Directory dir = new Directory();
+            List<String> permittedFileExtentions = new List<String>();
+            permittedFileExtentions.Add("cs");
+            permittedFileExtentions.Add("c");
+            permittedFileExtentions.Add("h");
+            permittedFileExtentions.Add("cpp");
+            permittedFileExtentions.Add("hpp");
+            permittedFileExtentions.Add("m");
+            permittedFileExtentions.Add("java");
+            permittedFileExtentions.Add("html");
+            permittedFileExtentions.Add("htm");
+            permittedFileExtentions.Add("php");
+
+            Directory dir = new Directory(permittedFileExtentions);
             dir.Load(input);
 
             Console.WriteLine("Size is " + dir.CalculateSize()/1024 + " KiB");
